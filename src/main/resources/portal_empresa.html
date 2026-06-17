@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Externo de Empresa - B2B Envíos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .section {
+            background: #ecf0f1;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+        #response-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Portal de Envíos Corporativos</h1>
+    <p>Simulador del portal interno de la Empresa para enviar peticiones a la API B2B.</p>
+
+    <form id="envioForm">
+        <div class="section">
+            <h3>Datos de la Empresa</h3>
+            <div class="form-group">
+                <label>Nombre Empresa</label>
+                <input type="text" id="nombre_empresa" value="Tech Solutions" readonly>
+            </div>
+            <div class="form-group">
+                <label>CIF Empresa</label>
+                <input type="text" id="cif" value="B12345678" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Destinatario</h3>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="destinatario_tipo">
+                    <option value="Particular">Particular</option>
+                    <option value="Empresa">Empresa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" id="destinatario_nombre" value="Lucía García" required>
+            </div>
+            <div class="form-group">
+                <label>DNI / CIF</label>
+                <input type="text" id="destinatario_dni_cif" value="98765432Y" required>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Paquete</h3>
+            <div class="form-group">
+                <label>Tamaño</label>
+                <select id="paquete_tamano">
+                    <option value="Pequeño">Pequeño (hasta 15x25 cm)</option>
+                    <option value="Mediano">Mediano (hasta 30x50 cm)</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Datos Logísticos</h3>
+            <div class="form-group">
+                <label>Tipo Recogida</label>
+                <select id="envio_tipo_recogida">
+                    <option value="Recogida en domicilio">Recogida en instalaciones</option>
+                    <option value="Entrega en oficina/punto de recogida">Entrega en oficina</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Lugar Recogida</label>
+                <input type="text" id="envio_lugar_recogida" value="Calle Alcalá 45, Madrid">
+            </div>
+            <div class="form-group">
+                <label>Tipo Entrega</label>
+                <select id="envio_tipo_entrega">
+                    <option value="Entrega a domicilio">Entrega a domicilio</option>
+                    <option value="Entrega en oficina/punto de recogida">Entrega en oficina</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Lugar Entrega</label>
+                <input type="text" id="envio_lugar_entrega" value="Calle Uría 12, Oviedo" required>
+            </div>
+        </div>
+
+        <button type="submit">Enviar Petición a API</button>
+    </form>
+
+    <div id="response-container"></div>
+</div>
+
+<script>
+document.getElementById('envioForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const payload = {
+        nombre_empresa: document.getElementById('nombre_empresa').value,
+        cif: document.getElementById('cif').value,
+        destinatario: {
+            tipo: document.getElementById('destinatario_tipo').value,
+            nombre: document.getElementById('destinatario_nombre').value,
+            dni_cif: document.getElementById('destinatario_dni_cif').value
+        },
+        paquete: {
+            tamano: document.getElementById('paquete_tamano').value
+        },
+        envio: {
+            tipo_recogida: document.getElementById('envio_tipo_recogida').value,
+            lugar_recogida: document.getElementById('envio_lugar_recogida').value,
+            tipo_entrega: document.getElementById('envio_tipo_entrega').value,
+            lugar_entrega: document.getElementById('envio_lugar_entrega').value
+        }
+    };
+
+    const responseContainer = document.getElementById('response-container');
+    responseContainer.style.display = 'block';
+    responseContainer.textContent = "Conectando con http://localhost:8080/api/envios ...";
+    responseContainer.className = '';
+
+    fetch('http://localhost:8080/api/envios', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        responseContainer.textContent = JSON.stringify(data, null, 2);
+        if(data.resultado === 'éxito') {
+            responseContainer.className = 'success';
+        } else {
+            responseContainer.className = 'error';
+        }
+    })
+    .catch(error => {
+        responseContainer.className = 'error';
+        responseContainer.textContent = "Error de conexión: Verifica que la aplicación de escritorio esté en ejecución y tengas sesión iniciada.\nDetalles: " + error.message;
+    });
+});
+</script>
+
+</body>
+</html>
