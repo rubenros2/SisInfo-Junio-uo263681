@@ -127,6 +127,8 @@ public class APIEnviosController {
             String tracking = "TRK-API-" + System.currentTimeMillis();
             EnvioDTO nuevoEnvio = new EnvioDTO();
             nuevoEnvio.setNumero_seguimiento(tracking);
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            nuevoEnvio.setFecha_creacion(sdf.format(new java.util.Date()));
             nuevoEnvio.setRemitente_nombre(nombreEmpresa);
             nuevoEnvio.setRemitente_dni_cif(cif);
             nuevoEnvio.setDestinatario_tipo(destTipo);

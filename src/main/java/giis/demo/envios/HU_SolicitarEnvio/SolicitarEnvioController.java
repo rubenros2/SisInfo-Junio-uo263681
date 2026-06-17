@@ -92,6 +92,8 @@ public class SolicitarEnvioController {
         String tracking = "TRK-" + System.currentTimeMillis();
         EnvioDTO envio = new EnvioDTO();
         envio.setNumero_seguimiento(tracking);
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        envio.setFecha_creacion(sdf.format(new java.util.Date()));
         envio.setUsuario_creador_id(activeUser.getId());
         envio.setRemitente_nombre(activeUser.getNombre());
         envio.setRemitente_dni_cif(activeUser.getDniNif());
