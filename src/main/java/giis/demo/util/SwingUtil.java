@@ -99,9 +99,15 @@ public class SwingUtil {
 		// tener en cuenta que para que la tabla pueda mostrar las columnas debera estar dentro de un JScrollPane
 		TableModel tm;
 		if (pojos == null) // solo las columnas (p.e. para inicializaciones)
-			return new DefaultTableModel(colProperties, 0);
+			return new DefaultTableModel(colProperties, 0) {
+				@Override
+				public boolean isCellEditable(int row, int column) { return false; }
+			};
 		else
-			tm = new DefaultTableModel(colProperties, pojos.size());
+			tm = new DefaultTableModel(colProperties, pojos.size()) {
+				@Override
+				public boolean isCellEditable(int row, int column) { return false; }
+			};
 		// carga cada uno de los valores de pojos usando PropertyUtils (de apache coommons beanutils)
 		for (int i = 0; i < pojos.size(); i++) {
 			for (int j = 0; j < colProperties.length; j++) {
@@ -122,7 +128,10 @@ public class SwingUtil {
 		// como solo habra dos columnas pongo una cabecera con dos valores vacios, de forma que
 		// aparezca muy reducida pero con el handler necesario para poder redimensionarla
 		TableModel tm;
-		tm = new DefaultTableModel(new String[] { "", "" }, colProperties.length);
+		tm = new DefaultTableModel(new String[] { "", "" }, colProperties.length) {
+			@Override
+			public boolean isCellEditable(int row, int column) { return false; }
+		};
 		// carga cada uno de los valores de pojos usando PropertyUtils (de apache coommons beanutils)
 		for (int j = 0; j < colProperties.length; j++) {
 			try {
