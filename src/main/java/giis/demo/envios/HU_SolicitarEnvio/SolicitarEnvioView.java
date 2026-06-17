@@ -69,6 +69,8 @@ public class SolicitarEnvioView extends JPanel {
         btnCalcularCoste.setFont(new Font("Segoe UI", Font.BOLD, 13));
         btnCalcularCoste.setBackground(new Color(40, 150, 80));
         btnCalcularCoste.setForeground(Color.WHITE);
+        btnCalcularCoste.setOpaque(true);
+        btnCalcularCoste.setBorderPainted(false);
         rightPanel.add(btnCalcularCoste, "growx");
 
         lblCosteCalculado = new JLabel("Importe Estimado: -- €");
@@ -88,6 +90,8 @@ public class SolicitarEnvioView extends JPanel {
         btnConfirmarContratar.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnConfirmarContratar.setBackground(new Color(20, 100, 200));
         btnConfirmarContratar.setForeground(Color.WHITE);
+        btnConfirmarContratar.setOpaque(true);
+        btnConfirmarContratar.setBorderPainted(false);
         btnConfirmarContratar.setEnabled(false);
         rightPanel.add(btnConfirmarContratar, "growx, gaptop 10");
 

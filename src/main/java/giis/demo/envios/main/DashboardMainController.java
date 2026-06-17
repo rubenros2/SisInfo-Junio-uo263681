@@ -79,13 +79,13 @@ public class DashboardMainController {
         view.getLblSesionInfo().setText(activeUser.getNombre() + " (" + activeUser.getDniNif() + ") - " + activeUser.getRol());
         String rol = activeUser.getRol();
         
-        if (rol.equals("Usuario") || rol.equals("Gerente")) {
+        if (rol.equals("Usuario")) {
             SolicitarEnvioView solView = new SolicitarEnvioView();
             solicitarEnvioController = new SolicitarEnvioController(new SolicitarEnvioModel(db), solView, activeUser);
             view.getTabbedPane().addTab("Solicitar Envío (HU-02)", solView);
         }
 
-        if (rol.equals("Usuario") || rol.equals("Empresa") || rol.equals("Gerente")) {
+        if (rol.equals("Usuario") || rol.equals("Empresa")) {
             ConsultaEnviosView consView = new ConsultaEnviosView();
             consultaEnviosController = new ConsultaEnviosController(new ConsultaEnviosModel(db), consView, activeUser);
             view.getTabbedPane().addTab("Mis Envíos (HU-08)", consView);
@@ -98,20 +98,20 @@ public class DashboardMainController {
             }
         }
 
-        if (rol.equals("Transportista") || rol.equals("Gerente")) {
+        if (rol.equals("Transportista")) {
             RecogidaPaqueteView recView = new RecogidaPaqueteView();
             recogidaPaqueteController = new RecogidaPaqueteController(new RecogidaPaqueteModel(db), recView, activeUser);
             view.getTabbedPane().addTab("Recogidas (HU-04)", recView);
             recogidaPaqueteController.loadData();
         }
 
-        if (rol.equals("Operario") || rol.equals("Gerente")) {
+        if (rol.equals("Operario")) {
             LlegadaAlmacenView llegView = new LlegadaAlmacenView();
             llegadaAlmacenController = new LlegadaAlmacenController(new LlegadaAlmacenModel(db), llegView, activeUser);
             view.getTabbedPane().addTab("Registrar Llegada (HU-06)", llegView);
         }
 
-        if (rol.equals("Operario") || rol.equals("Gerente")) {
+        if (rol.equals("Operario")) {
             SalidaAlmacenView salView = new SalidaAlmacenView();
             salidaAlmacenController = new SalidaAlmacenController(new SalidaAlmacenModel(db), salView, activeUser);
             view.getTabbedPane().addTab("Registrar Salida (HU-07)", salView);
@@ -124,7 +124,7 @@ public class DashboardMainController {
             }
         }
 
-        if (rol.equals("Empresa") || rol.equals("Gerente")) {
+        if (rol.equals("Empresa")) {
             view.getTabbedPane().addTab("Portal Externo (HU-03)", view.crearTabPortalExterno());
             view.getBtnAbrirPortalExterno().addActionListener(e -> SwingUtil.exceptionWrapper(this::handleAbrirPortal));
         }

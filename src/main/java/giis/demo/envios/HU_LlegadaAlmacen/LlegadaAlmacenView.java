@@ -46,6 +46,8 @@ public class LlegadaAlmacenView extends JPanel {
         btnConfirmarLlegada.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnConfirmarLlegada.setBackground(new Color(20, 100, 200));
         btnConfirmarLlegada.setForeground(Color.WHITE);
+        btnConfirmarLlegada.setOpaque(true);
+        btnConfirmarLlegada.setBorderPainted(false);
         panelDetalleLlegada.add(btnConfirmarLlegada, "growx, span 2, gaptop 10");
 
         add(panelDetalleLlegada, "growx");

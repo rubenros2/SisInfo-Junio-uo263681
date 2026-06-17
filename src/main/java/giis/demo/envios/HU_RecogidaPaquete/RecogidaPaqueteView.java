@@ -31,6 +31,8 @@ public class RecogidaPaqueteView extends JPanel {
         btnConfirmarRecogida.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnConfirmarRecogida.setBackground(new Color(40, 150, 80));
         btnConfirmarRecogida.setForeground(Color.WHITE);
+        btnConfirmarRecogida.setOpaque(true);
+        btnConfirmarRecogida.setBorderPainted(false);
         btnConfirmarRecogida.setEnabled(false);
         bottom.add(btnConfirmarRecogida, "growx, bottom");
 

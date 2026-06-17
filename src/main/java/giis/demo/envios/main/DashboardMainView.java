@@ -55,6 +55,8 @@ public class DashboardMainView {
         btnAbrirPortalExterno.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnAbrirPortalExterno.setBackground(new Color(20, 100, 200));
         btnAbrirPortalExterno.setForeground(Color.WHITE);
+        btnAbrirPortalExterno.setOpaque(true);
+        btnAbrirPortalExterno.setBorderPainted(false);
         btnAbrirPortalExterno.setPreferredSize(new Dimension(250, 50));
         panel.add(btnAbrirPortalExterno);
 

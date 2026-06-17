@@ -9,13 +9,12 @@ DELETE FROM Usuarios_Sistema;
 DELETE FROM sqlite_sequence WHERE name IN ('Usuarios_Sistema', 'Tarifas', 'Historial_Envios', 'Tramos_Ruta');
 
 -- Carga de Usuarios del Sistema (passwords por defecto '123456')
--- IDs generados serán: 1 (Juan), 2 (Tech Solutions), 3 (Carlos), 4 (Ana), 5 (Marta)
+-- IDs generados serán: 1 (Juan), 2 (Tech Solutions), 3 (Carlos), 4 (Ana)
 INSERT INTO Usuarios_Sistema (nombre, dni_nif, email, password_hash, rol, numero_empleado) VALUES
 ('Juan Pérez', '12345678A', 'juan@example.com', '123456', 'Usuario', NULL),
 ('Tech Solutions', 'B12345678', 'info@tech.com', '123456', 'Empresa', NULL),
 ('Carlos Ruiz', '87654321B', 'carlos@example.com', '123456', 'Transportista', 'T001'),
-('Ana Gómez', '56781234C', 'ana@example.com', '123456', 'Operario', 'O001'),
-('Marta Díaz', '11223344D', 'marta@example.com', '123456', 'Gerente', 'G001');
+('Ana Gómez', '56781234C', 'ana@example.com', '123456', 'Operario', 'O001');
 
 -- Carga de Tarifas Vigentes
 INSERT INTO Tarifas (categoria_tamano, precio) VALUES

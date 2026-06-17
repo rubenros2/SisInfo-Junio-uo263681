@@ -16,7 +16,7 @@ public class LoginView {
     private void initialize() {
         frame = new JFrame();
         frame.setTitle("Sistema de Gestión de Envíos - Inicio de Sesión");
-        frame.setBounds(100, 100, 400, 250);
+        frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setLayout(new BorderLayout());
@@ -37,10 +37,12 @@ public class LoginView {
         btnLogin.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnLogin.setBackground(new Color(20, 100, 200));
         btnLogin.setForeground(Color.WHITE);
+        btnLogin.setOpaque(true);
+        btnLogin.setBorderPainted(false);
         panelCentro.add(btnLogin);
 
         // Ayuda
-        JLabel lblAyuda = new JLabel("<html><div style='text-align: center;'><small>Usuarios de prueba:<br>Cliente: 12345678A | Empresa: B12345678<br>Transportista: 87654321B | Operario: 56781234C<br>Gerente: 11223344D</small></div></html>");
+        JLabel lblAyuda = new JLabel("<html><div style='text-align: center;'><small>Usuarios de prueba:<br>Cliente: 12345678A | Empresa: B12345678<br>Transportista: 87654321B | Operario: 56781234C</small></div></html>");
         lblAyuda.setForeground(Color.GRAY);
         panelCentro.add(lblAyuda, "gaptop 10");
 

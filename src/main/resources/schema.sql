@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Usuarios_Sistema (
     dni_nif VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    rol VARCHAR(50) NOT NULL CHECK (rol IN ('Usuario', 'Empresa', 'Transportista', 'Operario', 'Gerente')),
+    rol VARCHAR(50) NOT NULL CHECK (rol IN ('Usuario', 'Empresa', 'Transportista', 'Operario')),
     numero_empleado VARCHAR(50) UNIQUE
 );
 

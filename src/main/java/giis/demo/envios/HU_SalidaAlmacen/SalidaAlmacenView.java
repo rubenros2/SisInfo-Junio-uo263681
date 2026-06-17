@@ -42,6 +42,8 @@ public class SalidaAlmacenView extends JPanel {
         btnConfirmarSalida.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnConfirmarSalida.setBackground(new Color(40, 150, 80));
         btnConfirmarSalida.setForeground(Color.WHITE);
+        btnConfirmarSalida.setOpaque(true);
+        btnConfirmarSalida.setBorderPainted(false);
         btnConfirmarSalida.setEnabled(false);
         bottom.add(btnConfirmarSalida, "growx, bottom");
         add(bottom, "grow");
