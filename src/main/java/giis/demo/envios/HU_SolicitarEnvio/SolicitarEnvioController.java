@@ -126,10 +126,19 @@ public class SolicitarEnvioController {
             model.registrarTramoRuta(tr);
         }
 
+        String justificante = "¡Envío contratado con éxito!\n\n" +
+            "=== JUSTIFICANTE DE ENVÍO ===\n" +
+            "Número de seguimiento: " + tracking + "\n" +
+            "Fecha y hora de creación: " + envio.getFecha_creacion() + "\n" +
+            "Datos del destinatario: " + envio.getDestinatario_nombre() + " (" + envio.getDestinatario_dni_cif() + ")\n" +
+            "Categoría de tamaño del paquete: " + envio.getCategoria_tamano() + "\n" +
+            "Datos del envío: " + envio.getTipo_recogida() + " -> " + envio.getTipo_entrega() + "\n" +
+            "Importe total calculado: " + String.format("%.2f €", calculatedCost) + "\n" +
+            "=============================";
+
         JOptionPane.showMessageDialog(view, 
-            "¡Envío contratado con éxito!\nNúmero de seguimiento: " + tracking + 
-            "\nImporte: " + String.format("%.2f €", calculatedCost), 
-            "Contratación Completada", 
+            justificante, 
+            "Contratación Completada (Justificante)", 
             JOptionPane.INFORMATION_MESSAGE
         );
 

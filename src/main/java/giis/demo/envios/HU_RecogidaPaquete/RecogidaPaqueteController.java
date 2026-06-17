@@ -55,7 +55,7 @@ public class RecogidaPaqueteController {
             sb.append("Dirección Recogida: ").append(envio.getLugar_recogida()).append("\n");
             sb.append("Fecha Prevista Recogida: ").append(envio.getFecha_prevista_recogida()).append("\n");
             sb.append("-----------------------------------------\n");
-            sb.append("Destinatario: ").append(envio.getDestinatario_nombre()).append("\n");
+            sb.append("Destinatario: ").append(envio.getDestinatario_nombre()).append(" (").append(envio.getDestinatario_dni_cif()).append(")\n");
             sb.append("Dirección Entrega: ").append(envio.getLugar_entrega()).append("\n");
             sb.append("Tipo Entrega: ").append(envio.getTipo_entrega()).append("\n");
             sb.append("-----------------------------------------\n");
